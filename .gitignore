@@ -1,2 +1,5 @@
 # 上游仓库的克隆仅作本地参考，不纳入本仓库
 upstream/mpv_PlayKit_git/
+
+# 编辑器本地历史（VS Code Local History 插件自动生成）
+.history/
