@@ -6,7 +6,7 @@ mpv-lazy（hooke007/mpv_PlayKit）的配置管理仓库。mpv-lazy 升级时需�
 
 - `config/` — 实际维护的 portable_config 全部内容。
 - `docs/` — 修改记录。`CHANGELOG.md` 是总索引，单次较大的改动单独一份 md。
-- `upstream/` — 每次安装新版 mpv-lazy 时留存的原版 portable_config 快照，用于升级时对比。其中 `mpv_PlayKit_git` 是上游仓库的本地克隆（不入库）：日常对比用 `lite` 分支（懒人包的配置源头），查 uosc 等脚本完整源码或移植 main 独有功能时用 `main` 分支。
+- `upstream/` — 每次安装新版 mpv-lazy 时留存的原版 portable_config 快照，用于升级时对比。其中 `mpv_PlayKit_git` 是上游仓库的本地克隆：日常对比用 `lite` 分支（懒人包的配置源头），查 uosc 等脚本完整源码或移植 main 独有功能时用 `main` 分支。
 - `sync_from_mpv.bat` — 安装目录 -> 仓库。
 - `sync_to_mpv.bat` — 仓库 -> 安装目录。
 
