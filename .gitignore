@@ -1,0 +1,2 @@
+# 上游仓库的克隆仅作本地参考，不纳入本仓库
+upstream/mpv_PlayKit_git/
