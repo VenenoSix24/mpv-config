@@ -3,3 +3,6 @@ upstream/mpv_PlayKit_git/
 
 # 编辑器本地历史（VS Code Local History 插件自动生成）
 .history/
+
+# 升级脚本生成的临时对比报告（upgrade.bat 产物，结论写入 CHANGELOG 后可删）
+upgrade_reports/

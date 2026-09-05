@@ -11,6 +11,7 @@
 | 2026-09-05 | 配置 | config/script-opts/uosc_danmaku.conf | 新建弹幕样式配置：字号 38、显示范围 25%、描边 1、透明度 0.7 等，其余选项以注释形式留在文件内 |
 | 2026-09-05 | 功能 | config/script-opts.conf、config/script-opts/uosc_danmaku.conf | 底栏追加 button:danmaku_styles（实时样式菜单）与 button:danmaku_menu（弹幕设置总菜单）；开启 autoload_for_url（URL 播放自动加载/继承弹幕） |
 | 2026-09-05 | 样式 | config/script-opts.conf | 启用 uosc-thumbnail_mode=continuous：进度条缩略图随鼠标位置即时显示，不再等待停顿后出现 |
+| 2026-09-05 | 功能 | 升级.bat、README.md | 新增一键升级辅助脚本：迁移 _cache、生成新旧安装包上游变更报告（upgrade_reports/）、部署 config/ 到新版目录 |
 
 ## 记录约定
 
