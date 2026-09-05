@@ -12,6 +12,7 @@
 | 2026-09-05 | 功能 | config/script-opts.conf、config/script-opts/uosc_danmaku.conf | 底栏追加 button:danmaku_styles（实时样式菜单）与 button:danmaku_menu（弹幕设置总菜单）；开启 autoload_for_url（URL 播放自动加载/继承弹幕） |
 | 2026-09-05 | 样式 | config/script-opts.conf | 启用 uosc-thumbnail_mode=continuous：进度条缩略图随鼠标位置即时显示，不再等待停顿后出现 |
 | 2026-09-05 | 功能 | 升级.bat、README.md | 新增一键升级辅助脚本：迁移 _cache、生成新旧安装包上游变更报告（upgrade_reports/）、部署 config/ 到新版目录 |
+| 2026-09-05 | 功能 | 升级.bat、upgrade.ps1 | 升级脚本重构为 bat 启动器 + PowerShell 实现（UTF-8，避免 GBK 乱码）：目录改用文件夹选择对话框、报告增加新增/删除/修改汇总、排除并迁移 saved-props.json 与 danmaku-history.json 运行时文件、diff 路径简化为 旧版/新版、修正 UTF-8 解码 |
 
 ## 记录约定
 
