@@ -9,6 +9,7 @@
 | 2026-09-05 | 功能 | config/script-opts.conf | uosc 底栏新增"旋转画面"按钮（启用 uosc-controls 自定义布局，在 loop-file 与 prev 之间插入 command:rotate_right 按钮，循环 0/90/180/270） |
 | 2026-09-05 | 功能 | config/script-opts.conf | uosc 底栏新增弹幕控件：stream-quality 后插入 button:danmaku（弹幕搜索）与 cycle:toggle_on:show_danmaku@uosc_danmaku（弹幕开关），配合 uosc_danmaku 2.2.0 |
 | 2026-09-05 | 配置 | config/script-opts/uosc_danmaku.conf | 新建弹幕样式配置：字号 38、显示范围 25%、描边 1、透明度 0.7 等，其余选项以注释形式留在文件内 |
+| 2026-09-05 | 功能 | config/script-opts.conf、config/script-opts/uosc_danmaku.conf | 底栏追加 button:danmaku_styles（实时样式菜单）与 button:danmaku_menu（弹幕设置总菜单）；开启 autoload_for_url（URL 播放自动加载/继承弹幕） |
 
 ## 记录约定
 
