@@ -1,5 +1,5 @@
 ﻿# mpv-lazy 升级辅助脚本（由 升级.bat 启动）
-# 流程：选旧版目录 -> 选新版目录 -> 迁移 _cache -> 生成上游变更报告 -> 部署 config/
+# 流程：选旧版目录 -> 选新版目录 -> 迁移 _cache -> 快照新版原版配置到 upstream/ -> 生成上游变更报告 -> 部署 config/
 
 $ErrorActionPreference = 'Stop'
 # 懒人包配置为 UTF-8 编码，git diff 输出必须按 UTF-8 解码，否则中文变乱码
@@ -53,7 +53,7 @@ if ($confirm -ne 'y') { Pause-Exit }
 
 # ---- 1. 迁移运行数据（_cache 及根目录下的状态文件） ----
 Write-Host ''
-Write-Host '[1/3] 迁移运行数据...'
+Write-Host '[1/4] 迁移运行数据...'
 $OldCache = Join-Path $OldDir 'portable_config\_cache'
 if (Test-Path $OldCache) {
     robocopy $OldCache (Join-Path $NewDir 'portable_config\_cache') /E /NFL /NDL /NJH /NJS | Out-Null
@@ -65,8 +65,19 @@ foreach ($f in @('saved-props.json', 'danmaku-history.json')) {
     if (Test-Path $src) { Copy-Item $src (Join-Path $NewDir 'portable_config') -Force }
 }
 
-# ---- 2. 生成上游变更报告（对比两个安装包自带的 portable_config） ----
-Write-Host '[2/3] 生成上游变更报告...'
+# ---- 2. 快照新版原版配置到 upstream/（必须在部署 config/ 之前，此时新版还是原版） ----
+Write-Host '[2/4] 快照新版原版配置到 upstream/...'
+$Stamp = Get-Date -Format 'yyyyMMdd'
+$SnapDir = Join-Path $Repo "upstream\v${Stamp}_orig_portable_config"
+if (Test-Path $SnapDir) {
+    Write-Host "      $SnapDir 已存在，跳过快照。"
+} else {
+    robocopy (Join-Path $NewDir 'portable_config') $SnapDir /E /XD _cache .history /NFL /NDL /NJH /NJS | Out-Null
+    Write-Host "      已保存：$SnapDir"
+}
+
+# ---- 3. 生成上游变更报告（对比两个安装包自带的 portable_config） ----
+Write-Host '[3/4] 生成上游变更报告...'
 $Stamp = Get-Date -Format 'yyyy-MM-dd'
 $ReportDir = Join-Path $Repo 'upgrade_reports'
 $Report = Join-Path $ReportDir "${Stamp}_old_vs_new_diff.txt"
@@ -122,8 +133,8 @@ if ($Summary.Count -eq 0) {
 [IO.File]::WriteAllText($Report, $Body, [Text.UTF8Encoding]::new($true))
 Remove-Item $TmpOld, $TmpNew -Recurse -Force -ErrorAction SilentlyContinue
 
-# ---- 3. 部署 config/（不删除，保留上游新增文件） ----
-Write-Host '[3/3] 部署 config/ 到新版目录...'
+# ---- 4. 部署 config/（不删除，保留上游新增文件） ----
+Write-Host '[4/4] 部署 config/ 到新版目录...'
 robocopy $Config (Join-Path $NewDir 'portable_config') /E /NFL /NDL /NJH /NJS | Out-Null
 
 Write-Host ''
