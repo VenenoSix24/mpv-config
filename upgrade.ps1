@@ -1,4 +1,4 @@
-﻿# mpv-lazy 升级辅助脚本（由 升级.bat 启动）
+﻿# mpv-lazy 更新辅助脚本（由 update.bat 启动）
 # 流程：选旧版目录 -> 选新版目录 -> 迁移 _cache -> 快照新版原版配置到 upstream/ -> 生成上游变更报告 -> 部署 config/
 
 $ErrorActionPreference = 'Stop'
